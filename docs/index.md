@@ -2,7 +2,7 @@
 
 A modular, magnetic ESP32-C3 desk buddy with an animated OLED face, a microphone, a speaker, touch and knock sensing, and an optional battery.
 
-![Sparky assembled](images/sparky_assembled.png)
+![Sparky snapping apart into its modules](images/sparky_explode.gif)
 
 > **v0.1 prototype.** Part sizes are estimates and nothing has been test-printed yet. Measure your parts and adjust [config.scad](https://github.com/slahiri/sparky/blob/main/cad/config.scad) first.
 

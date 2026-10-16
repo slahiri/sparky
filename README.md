@@ -2,7 +2,7 @@
 
 **A modular, magnetic ESP32-C3 desk buddy.** Sparky has an animated OLED face, listens through a microphone, talks through a speaker, reacts to touch and knocks, and runs on USB or its own battery. Every module snaps together with magnets, so you can swap the shell, the battery base or the electronics rack without tools.
 
-![Sparky assembled](docs/images/sparky_assembled.png)
+<p align="center"><img src="docs/images/sparky_explode.gif" width="480" alt="Sparky snapping apart into its modules and back together"></p>
 
 [![CAD](https://github.com/slahiri/sparky/actions/workflows/cad.yml/badge.svg)](https://github.com/slahiri/sparky/actions/workflows/cad.yml)
 [![Firmware](https://github.com/slahiri/sparky/actions/workflows/firmware.yml/badge.svg)](https://github.com/slahiri/sparky/actions/workflows/firmware.yml)
@@ -71,6 +71,7 @@ STLs are **built from the OpenSCAD source by CI**, never committed:
 ```bash
 ./scripts/export_stl.sh      # STLs into stl/
 ./scripts/render_png.sh      # preview images into renders/
+./scripts/render_gif.sh      # the explode animation (needs ImageMagick)
 ```
 
 ## Inspiration

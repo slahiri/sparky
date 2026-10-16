@@ -33,10 +33,10 @@ if (part == "assembly") {
   color("#9A988F") base();
   color("#534AB7") translate([0, 0, base_h + explode*0.5]) collar();
   color("#B9B7AD") translate([0, 0, explode]) rack();
-  color("#D3D1C7") translate([0, explode*0.6, explode*1.5]) crown();
+  color("#D3D1C7") translate([0, explode*0.4, explode*1.6]) crown();
   if (show_electronics) translate([0, 0, explode]) electronics_low();
-  if (show_electronics) translate([0, explode*0.6, explode*1.5]) electronics_top();
-  color("#E8825F", 0.9) translate([0, 0, explode*2]) shell();
+  if (show_electronics) translate([0, explode*0.4, explode*1.6]) electronics_top();
+  color("#E8825F", 0.9) translate([0, 0, explode*3]) shell();
 }
 else if (part == "shell")  translate([0, 0, -shell_z0]) shell();
 else if (part == "collar") collar();

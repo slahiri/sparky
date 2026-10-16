@@ -1,7 +1,3 @@
----
-title: Bill of materials
----
-
 # Bill of materials
 
 The full list with example links is in [hardware/bom.csv](https://github.com/slahiri/sparky/blob/main/hardware/bom.csv).

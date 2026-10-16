@@ -1,7 +1,3 @@
----
-title: Firmware
----
-
 # Firmware
 
 The firmware is a [PlatformIO](https://platformio.org) project in [firmware/](https://github.com/slahiri/sparky/blob/main/firmware). Right now it's a **hardware test** that checks every module:

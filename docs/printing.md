@@ -1,7 +1,3 @@
----
-title: Printing
----
-
 # Printing
 
 STLs are in [stl/](https://github.com/slahiri/sparky/tree/main/stl). They're already placed in their print orientation.

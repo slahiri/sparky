@@ -1,7 +1,3 @@
----
-title: Sparky
----
-
 # Sparky
 
 A modular, magnetic ESP32-C3 desk buddy with an animated OLED face, a microphone, a speaker, touch and knock sensing, and an optional battery.

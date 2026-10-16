@@ -1,7 +1,3 @@
----
-title: Module interface
----
-
 # Module interface (for remixers)
 
 Any part that keeps these dimensions works with the rest of Sparky. All values live in [config.scad](https://github.com/slahiri/sparky/blob/main/cad/config.scad); the origin is the centre of the footprint on the table, with the screen facing −Y.

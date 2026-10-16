@@ -1,7 +1,3 @@
----
-title: Wiring
----
-
 # Wiring
 
 ![Wiring diagram](images/wiring.svg)

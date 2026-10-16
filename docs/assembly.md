@@ -1,7 +1,3 @@
----
-title: Assembly
----
-
 # Assembly
 
 ## 1. Set the magnets (do this first)

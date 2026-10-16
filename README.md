@@ -42,7 +42,7 @@ sparky/
 ├── stl/                 ready-to-print STLs (generated from cad/)
 ├── firmware/            PlatformIO project for the ESP32-C3
 ├── hardware/            BOM, wiring diagram, pin map
-├── docs/                build guide (published with GitHub Pages)
+├── docs/                build guide
 └── scripts/             helper scripts (STL export)
 ```
 

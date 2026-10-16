@@ -8,10 +8,11 @@ Any part that keeps these dimensions works with the rest of Sparky. All values l
 | Battery base height | 12 mm (deck top) |
 | Collar | 4 mm band + 2 mm locating ridge, 4 pin holes |
 | Shell | bottom at Z 16, top at Z 70, 2 mm wall |
-| Rack | 47.2 × 43.2 mm, Z 12 to 65 |
+| Rack | 47.2 × 43.2 mm (R3.8 corners), Z 12 to 62 |
+| Crown | 46 × 40.6 mm, Z 62 to 66, slides in from +Y on dovetails at X ±20.1 |
 | Magnets | 6 × 3 mm, pockets 6.2 × 3.2 mm, all N faces up |
 | Base ↔ rack magnets | (±21, −14), (±21, 16) |
-| Rack ↔ shell magnets | (±18, −15), (±18, 17) at Z 65 |
+| Crown ↔ shell magnets | (±17, −15), (±17, 17) at Z 66 |
 | Lid ↔ base magnets | (±21, ±19) |
 | Collar pins | (±25.9, 0), (0, ±23.9), 1.75 mm filament |
 

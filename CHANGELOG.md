@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Removable crown: the rack's top is now a separate part that slides in from the back on dovetail rails, so the rack can be wired from above
+- Shell magnets moved into the crown at (±17, −15) and (±17, 17); crown is 4 mm thick
+- Fixed: rack corners clashed with the collar's rounded opening (rack now has R3.8 corners)
+- Speaker cradle lowered to clear the new rail bars
+
 ## v0.1.0 - 2026-10-16
 
 First public draft.

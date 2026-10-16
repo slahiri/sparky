@@ -30,6 +30,7 @@
 | **Outer shell** | Rounded 56 × 52 mm skin with the screen window, mic pinhole, LED hole, speaker grille, USB and switch cutouts. Snaps to the rack crown with 4 magnets. |
 | **Interface collar** | The separate lip between base and shell. Located by filament pins, clamped by the shell. Print it in an accent colour. |
 | **Inner rack** | Reinforced PLA frame (3 mm walls, gussets) that carries every electronic part. |
+| **Crown** | The rack's removable top. Slides in from the back on dovetail rails and carries the mic, touch sensor and shell magnets. Slide it out and the whole rack is open from above for wiring. |
 | **Battery base + lid** | Holds a 503040 LiPo. Snaps to the rack with 4 magnets; the lid snaps on with 4 more. |
 
 ## Repository layout
@@ -39,7 +40,7 @@ sparky/
 ├── cad/                 OpenSCAD source (edit config.scad first)
 │   ├── config.scad      all dimensions + the module interface spec
 │   ├── sparky.scad      assembly and part selector
-│   └── parts/           shell, collar, rack, base, lid
+│   └── parts/           shell, collar, rack, crown, base, lid
 ├── .github/workflows/   CI: builds STLs, renders and firmware; publishes releases
 ├── firmware/            PlatformIO project for the ESP32-C3
 ├── hardware/            BOM, wiring diagram, pin map

@@ -29,11 +29,11 @@ module shell() {
       translate([outer_w/2 - wall - 1, spk_y0 + i*spk_pitch, spk_z0])
         cube([wall + 2, spk_slot_w, spk_z1 - spk_z0]);
   }
-  // ceiling magnet pads (mate with the rack crown)
+  // ceiling magnet pads (mate with the crown)
   for (p = mag_rack_shell) translate([p[0], p[1], 0])
     difference() {
-      translate([0, 0, 65.2]) cylinder(d = boss_d, h = shell_z1 - wall - 65.2 + 0.5);
-      mag_pocket(65.2 - 0.01);
+      translate([0, 0, crown_top + 0.2]) cylinder(d = boss_d, h = shell_z1 - wall - crown_top - 0.2 + 0.5);
+      mag_pocket(crown_top + 0.2 - 0.01);
     }
 }
 

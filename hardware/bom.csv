@@ -11,7 +11,7 @@ qty,part,spec,notes,example_source
 1,SPDT slide switch,8.6 x 3.6 mm,Battery on/off,
 1,LiPo 503040,3.7 V ~600 mAh with 2-pin plug,Optional; check plug and polarity,https://www.amazon.in/dp/B0D517DPBJ
 24,Neodymium magnet,6 x 3 mm disc,All N faces up; 60-pack recommended,https://www.amazon.in/dp/B0B5RGXYQM
-4,M2 x 8 self-tapping screw,,OLED to rack,https://www.amazon.in/dp/B07VWKBHYZ
+5,M2 x 8 self-tapping screw,,4 for the OLED + 1 optional crown lock,https://www.amazon.in/dp/B07VWKBHYZ
 4,1.75 mm filament pin,~5 mm long,Locates the collar on the base,
 ~20,Dupont jumper wires,female-female 10 cm,,
 1,Super glue (CA),,Fix magnets in pockets,

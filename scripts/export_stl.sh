@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p stl
-for p in shell collar rack base lid; do
+for p in shell collar rack crown base lid; do
   echo "Exporting $p..."
   openscad -q -D "part=\"$p\"" -o "stl/sparky_$p.stl" cad/sparky.scad
 done

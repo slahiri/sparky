@@ -10,7 +10,7 @@ cam_part="--camera=0,0,0,60,0,215,0"
 common=(-q --render --autocenter --viewall --colorscheme=Tomorrow)
 openscad "${common[@]}" --imgsize=1200,900  $cam_iso -o "$out/sparky_assembled.png" cad/sparky.scad
 openscad "${common[@]}" --imgsize=1200,1000 $cam_iso -D explode=40 -o "$out/sparky_exploded.png" cad/sparky.scad
-for p in shell collar rack base lid; do
+for p in shell collar rack crown base lid; do
   openscad "${common[@]}" --imgsize=800,640 $cam_part -D "part=\"$p\"" -o "$out/part_$p.png" cad/sparky.scad
 done
 echo "Renders are in $out/"

@@ -17,7 +17,7 @@ The second magnet ends up facing the correct way automatically. Mark the north f
 |---|---|
 | Lid ↔ base | 4 in the lid top, 4 in the base corner posts |
 | Base ↔ rack | 4 in the base deck, 4 under the rack floor |
-| Rack ↔ shell | 4 on the rack crown, 4 in the shell ceiling pads |
+| Crown ↔ shell | 4 on top of the crown, 4 in the shell ceiling pads |
 
 ## 2. Collar pins
 
@@ -25,16 +25,21 @@ Push four 5 mm pieces of 1.75 mm filament into the pin holes on top of the base.
 
 ## 3. Load the rack
 
+Slide the **crown** out towards the back first (remove the lock screw if you fitted it). The rack is then open from above, which is how you reach the ESP32's pin headers.
+
+
 1. **OLED:** screw it to the front carrier with 4 × M2 screws, with the header pins at the top. Feed the wires through the slot above it.
 2. **LED:** push it into the hole under the screen from behind.
 3. **ESP32-C3 + expansion board:** on the shelf, USB-C facing the back.
 4. **Speaker:** slide it between the two ribs on the right frame, cone facing out.
 5. **Amp:** on the inside of the rear wall, above the USB port.
 6. **SW420:** on the left frame.
-7. **Mic and touch:** on top of the crown. The mic goes at the front, under the pinhole. Route both cables down through the crown slot.
+7. **Mic and touch:** stick them on top of the crown (mic at the front, under the pinhole) and pass their cables down through the crown slot.
 8. **Switch:** in the bracket at the back, next to the USB-C port.
 
-Wire everything as shown in [Wiring](wiring.md). Double-sided foam tape or a dab of hot glue holds the small modules well.
+Wire everything as shown in [Wiring](wiring.md) while the top is open. Double-sided foam tape or a dab of hot glue holds the small modules well.
+
+9. **Close the top:** slide the crown in from the back along the two rails until it stops at the front. Optionally fit one M2 screw through the hole at the back to lock it.
 
 ## 4. Stack it
 

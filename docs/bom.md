@@ -16,7 +16,7 @@ The full list with example links is in [hardware/bom.csv](https://github.com/sla
 | 1 | SPDT slide switch | Battery on/off |
 | 1 | LiPo 503040, about 600 mAh | Optional. Check plug and polarity |
 | 24 | 6 × 3 mm neodymium magnets | 12 pairs |
-| 4 | M2 × 8 self-tapping screws | OLED to rack |
+| 5 | M2 × 8 self-tapping screws | 4 for the OLED, 1 optional crown lock |
 | 4 | 1.75 mm filament, about 5 mm long | Collar locating pins |
 | ~20 | Female–female Dupont wires | |
 

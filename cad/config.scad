@@ -26,7 +26,7 @@ mag_h     = 3.2;    // pocket depth (magnet 3.0)
 boss_d    = 9;
 
 mag_base_rack  = [[-21,-14],[21,-14],[-21,16],[21,16]];   // base deck <-> rack floor
-mag_rack_shell = [[-18,-15],[18,-15],[-18,17],[18,17]];   // rack crown <-> shell ceiling
+mag_rack_shell = [[-17,-15],[17,-15],[-17,17],[17,17]];   // crown <-> shell ceiling
 mag_lid        = [[-21,-19],[21,-19],[-21,19],[21,19]];   // lid <-> base
 collar_pins    = [[-25.9,0],[25.9,0],[0,-23.9],[0,23.9]];
 pin_hole  = 1.95;   // locating pins: short pieces of 1.75 mm filament
@@ -37,7 +37,21 @@ rack_z0   = base_h;  // 12, sits on the base deck
 rack_w    = 47.2;
 rack_d    = 43.2;
 rack_t    = 3;       // structural wall thickness (PLA: keep >= 3)
-crown_z   = 62;      // crown plate bottom (top = 65)
+rack_corner_r = 3.8; // vertical corner radius (clears the collar's R4 opening)
+crown_z   = 62;      // top of the rack frame = underside of the removable crown
+crown_t   = 4;       // crown thickness (holds the shell magnets)
+crown_top = crown_z + crown_t;   // 66
+
+// Dovetail rails: the crown slides in from the back along the side frame tops.
+rail_x       = 20.1;   // rail centre line, +/-
+rail_cap_w   = 7;      // width of the rail bar on top of each side frame
+rail_cap_h   = 4;
+dt_depth     = 2.5;    // groove depth
+dt_top_w     = 3.0;    // groove width at the opening
+dt_bot_w     = 4.4;    // groove width at the bottom (the undercut)
+dt_clear     = 0.2;    // per side, tongue vs groove
+dt_stop_y    = -16;    // grooves are closed in front of this (front stop)
+crown_lock   = true;   // optional M2 screw at the back
 shelf_z   = 21;      // ESP32 shelf bottom (top = 24)
 
 // ---------- Components (measure) ----------
@@ -65,3 +79,8 @@ module rbox(w, d, h, r) {      // box with every edge rounded, z from 0 to h
     translate([x*(w/2 - r), y*(d/2 - r), z]) sphere(r);
 }
 module mag_pocket(z) { translate([0,0,z]) cylinder(d = mag_d, h = mag_h); }
+
+// Dovetail profile along Y: top width at z = 0, bottom width at z = -depth.
+module dovetail(w_top, w_bot, depth, y0, y1)
+  translate([0, y1, 0]) rotate([90, 0, 0]) linear_extrude(y1 - y0)
+    polygon([[-w_top/2, 0], [w_top/2, 0], [w_bot/2, -depth], [-w_bot/2, -depth]]);

@@ -7,6 +7,7 @@ Download the STLs from the [latest release](https://github.com/slahiri/sparky/re
 | Outer shell | `sparky_shell.stl` | Open side down | The ceiling is a ~48 mm bridge; enable bridge cooling, or add tree supports inside |
 | Interface collar | `sparky_collar.stl` | Flat | Accent colour looks great |
 | Inner rack | `sparky_rack.stl` | Upright on its floor | Structural: see settings below |
+| Crown | `sparky_crown.stl` | Top face down, tongues up | Same settings as the rack. Check the tongues slide in the rack's grooves before gluing magnets |
 | Battery base | `sparky_base.stl` | Deck down | No supports needed |
 | Battery lid | `sparky_lid.stl` | Flat | |
 

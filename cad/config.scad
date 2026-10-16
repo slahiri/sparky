@@ -1,5 +1,5 @@
 // Sparky - shared parameters and the module interface spec.
-// All dimensions in mm. Origin: centre of the footprint, on the table.
+// All dimensions in mm. Origin: centre line of the body, on the table.
 // +X = right, +Y = back, -Y = front (screen side), +Z = up.
 //
 // Values marked (measure) are estimates; measure your parts and edit here.
@@ -7,69 +7,100 @@
 $fn = 48;
 
 // ---------- Interface (keep fixed so modules stay swappable) ----------
-outer_w   = 56;     // footprint width
-outer_d   = 52;     // footprint depth
-corner_r  = 8;      // vertical corner radius of shell, collar and base
-wall      = 2;      // shell wall
-clear     = 0.3;    // fit clearance between printed parts
+outer_w   = 64.4;    // shell, collar and base footprint
+outer_y0  = -30;     // front face of the shell
+outer_y1  = 26.6;    // back face of the shell
+outer_d   = outer_y1 - outer_y0;          // 56.6
+outer_cy  = (outer_y0 + outer_y1) / 2;    // footprint centre (Y)
+corner_r  = 8;       // outer corner radius of shell, collar and base
+wall      = 2;       // shell wall
+in_r      = corner_r - wall;              // 6, inside radius of the shell
+clear     = 0.3;     // fit clearance between printed parts
 
-base_h    = 12;     // battery base height (deck top)
-deck_t    = 2;      // base deck thickness
-collar_h  = 4;      // interface collar band
-ridge_h   = 2;      // locating ridge on top of the collar
-shell_z0  = base_h + collar_h;  // 16, bottom of the shell
-shell_z1  = 70;     // top of the shell
+feet_h    = 2;       // base feet
+base_top  = 7;       // top of the base = underside of the rack
+collar_h  = 4;
+shell_z0  = base_top + collar_h;          // 11, bottom of the shell
+shell_z1  = 76;      // top of the shell
 
 // Magnets: 6 x 3 mm neodymium discs, all N faces pointing up.
-mag_d     = 6.2;    // pocket diameter (magnet 6.0)
-mag_h     = 3.2;    // pocket depth (magnet 3.0)
+mag_d     = 6.2;     // pocket diameter (magnet 6.0)
+mag_h     = 3.2;     // pocket depth (magnet 3.0)
 boss_d    = 9;
 
-mag_base_rack  = [[-21,-14],[21,-14],[-21,16],[21,16]];   // base deck <-> rack floor
-mag_rack_shell = [[-17,-15],[17,-15],[-17,17],[17,17]];   // crown <-> shell ceiling
-mag_lid        = [[-21,-19],[21,-19],[-21,19],[21,19]];   // lid <-> base
-collar_pins    = [[-25.9,0],[25.9,0],[0,-23.9],[0,23.9]];
-pin_hole  = 1.95;   // locating pins: short pieces of 1.75 mm filament
+mag_base_rack  = [[-24,-15],[24,-15],[-24,16],[24,16]];   // base top <-> rack floor
+mag_rack_shell = [[-23,-15],[23,-15],[-23,17],[23,17]];   // rack towers <-> shell ceiling
+pin_hole  = 1.95;    // locating pins: short pieces of 1.75 mm filament
 pin_depth = 3;
+collar_pins = [[-15, 24.25], [15, 24.25]];   // base <-> collar
+face_pins   = [[-24, -23.5], [24, -23.5]];   // rack floor <-> face frame
 
-// ---------- Inner rack ----------
-rack_z0   = base_h;  // 12, sits on the base deck
-rack_w    = 47.2;
-rack_d    = 43.2;
-rack_t    = 3;       // structural wall thickness (PLA: keep >= 3)
-rack_corner_r = 3.8; // vertical corner radius (clears the collar's R4 opening)
-crown_z   = 62;      // top of the rack frame = underside of the removable crown
-crown_t   = 4;       // crown thickness (holds the shell magnets)
-crown_top = crown_z + crown_t;   // 66
+// ---------- Rack (the body every part slides into) ----------
+rack_xo   = 29.8;    // outside of the side walls
+rack_t    = 2.4;     // side wall thickness
+rack_xi   = rack_xo - rack_t;            // 27.4
+rack_yf   = -27.6;   // front of the face frame
+rack_yb   = 21.6;    // back of the rack (open)
+rack_cf   = 5.5;     // 45 deg front corner chamfer (clears the shell's inside radius, prints face-down)
+rack_rb   = 3.5;     // back corner radius
+floor_z   = base_top;                    // 7
+floor_t   = 4.4;
+in_z      = floor_z + floor_t;           // 11.4, top of the floor
+rack_top  = 68.4;    // top of the walls = underside of the lid
+lid_t     = 4;
+lid_top   = rack_top + lid_t;            // 72.4
 
-// Dovetail rails: the crown slides in from the back along the side frame tops.
-rail_x       = 20.1;   // rail centre line, +/-
-rail_cap_w   = 7;      // width of the rail bar on top of each side frame
-rail_cap_h   = 4;
-dt_depth     = 2.5;    // groove depth
-dt_top_w     = 3.0;    // groove width at the opening
-dt_bot_w     = 4.4;    // groove width at the bottom (the undercut)
-dt_clear     = 0.2;    // per side, tongue vs groove
-dt_stop_y    = -16;    // grooves are closed in front of this (front stop)
-crown_lock   = true;   // optional M2 screw at the back
-shelf_z   = 21;      // ESP32 shelf bottom (top = 24)
+tower_x   = 17.2;    // inner face of the two top towers (lid fits between)
+tower_z0  = rack_top - 2;                // underside of the towers
+chamfer   = 3;       // 45 deg chamfer on the towers' outer top edges
+
+// LiPo side bays: a rib on each side, the bay is between rib and wall
+rib_x     = 19.6;    // inner face of the rib
+rib_t     = 1.6;
+bay_z1    = 41.8;    // top of the ribs
+
+// Middle plate (slide 2): MPU-6050 on top, amp hanging underneath
+plate_z0  = 43;
+plate_t   = 3;
+plate_z1  = plate_z0 + plate_t;          // 46
+plate_y0  = -15.2;
+plate_w   = 2*rack_xi - 0.4;
+hole_x    = [12, 19.4];                  // wire holes in the plate corners (|x|)
+hole_yf   = [-14.2, -8.6];
+hole_yb   = [13.6, 19.6];
+ledge     = 1.2;                         // plate ledges on the walls
+
+// Board slide (slide 1)
+board     = [28, 34.6, 1.6];             // expansion board (measure)
+board_y0  = -12.6;
+board_z   = in_z + 1;                    // board rests on two ledges
+
+// Face frame (display + speaker), drops onto the floor in front of the walls
+face_yb   = -19.4;   // back of the face frame = front of the side walls
+face_t    = 2;       // front plate
+flange_t  = 2;       // bottom flange the speaker stands on
 
 // ---------- Components (measure) ----------
-oled_hole_dx = 30.4;           // 1.3" OLED mounting holes, centre to centre
-oled_hole_dz = 28.4;
-oled_hole_z  = 45;             // centre height of the OLED
-m2_pilot     = 1.8;            // pilot hole for M2 self-tapping screws
+oled      = [35.4, 1.4, 33.4];           // 1.3" OLED PCB, landscape, pins on top
+glass     = [34.5, 1.4, 23];
+glass_up  = 6;       // glass bottom above the PCB bottom
+speaker   = [40, 4.8, 20];               // 2040 speaker standing on edge
+spk_z0    = in_z + flange_t;             // 13.4
+ledge_z0  = spk_z0 + speaker[2] + 0.2;   // 33.6, display shelf
+oled_z0   = ledge_z0 + 1;                // 34.6
+mpu       = [20.3, 15.6, 1.6];           // GY-521
+amp       = [17.8, 19.3, 1.6];           // MAX98357A
+mic_d     = 14;                          // INMP441, round
+mic_xy    = [-2, -2.5];
+touch     = [15, 11];                    // TTP223
+battery   = [5, 40, 30];                 // LiPo 503040 on edge
 
-screen_w  = 34;  screen_h = 24;  screen_z = 34;   // window in the shell
-led_z     = 20;  led_d    = 5.2;
-mic_y     = -7;  mic_hole = 1.2;
-usb_w     = 12;  usb_h    = 7;   usb_z    = 33;
-sw_x      = 13.5; sw_w    = 8;   sw_h     = 4;   sw_z = 30;
-spk_slots = 5;   spk_y0   = -9;  spk_pitch = 3.5; spk_slot_w = 1.6;
-spk_z0    = 24;  spk_z1   = 56;
-
-battery   = [30, 40, 5];       // LiPo 503040 (measure)
-lid_t     = 4;
+// Shell openings
+win_w     = 31;      // display window (active area 29.4 x 14.7)
+win_z     = [oled_z0 + glass_up + 3, oled_z0 + glass_up + 20];
+grille_z  = [15.4, 31.4];
+usb       = [12.4, 21.3, 28.1];          // width, z0, z1
+mic_hole  = 1.4;
 
 // ---------- Helpers ----------
 module rrect2d(w, d, r) { offset(r) square([w - 2*r, d - 2*r], center = true); }
@@ -79,8 +110,19 @@ module rbox(w, d, h, r) {      // box with every edge rounded, z from 0 to h
     translate([x*(w/2 - r), y*(d/2 - r), z]) sphere(r);
 }
 module mag_pocket(z) { translate([0,0,z]) cylinder(d = mag_d, h = mag_h); }
+module pin_hole_at(z, h = pin_depth) translate([0,0,z]) cylinder(d = pin_hole, h = h, $fn = 16);
 
-// Dovetail profile along Y: top width at z = 0, bottom width at z = -depth.
-module dovetail(w_top, w_bot, depth, y0, y1)
-  translate([0, y1, 0]) rotate([90, 0, 0]) linear_extrude(y1 - y0)
-    polygon([[-w_top/2, 0], [w_top/2, 0], [w_bot/2, -depth], [-w_bot/2, -depth]]);
+// Plan outline of the rack (and the collar opening)
+module rack_2d(grow = 0) {
+  offset(delta = grow) hull() {
+    polygon([[-rack_xo + rack_cf, rack_yf], [rack_xo - rack_cf, rack_yf], [rack_xo, rack_yf + rack_cf], [-rack_xo, rack_yf + rack_cf]]);
+    for (s = [-1, 1]) translate([s*(rack_xo - rack_rb), rack_yb - rack_rb]) circle(rack_rb);
+  }
+}
+// Outer footprint (shell, collar, base)
+module outer_2d() translate([0, outer_cy]) rrect2d(outer_w, outer_d, corner_r);
+
+// A profile in the X-Z plane, extruded along Y from y0 to y1.
+module along_y(y0, y1) translate([0, y1, 0]) rotate([90, 0, 0]) linear_extrude(y1 - y0) children();
+// A profile in the Y-Z plane, extruded along X from x0 to x1.
+module along_x(x0, x1) translate([x0, 0, 0]) rotate([90, 0, 90]) linear_extrude(x1 - x0) children();

@@ -21,7 +21,7 @@ jobs:
         run: ./scripts/export_stl.sh
       - name: Check every part exported
         run: |
-          for p in shell collar rack crown base lid; do
+          for p in shell collar base rack face plate lid; do
             test -s "stl/sparky_$p.stl" || { echo "::error::sparky_$p.stl is missing or empty"; exit 1; }
           done
       - name: Render previews

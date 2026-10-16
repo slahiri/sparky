@@ -1,6 +1,6 @@
 # Sparky
 
-**A modular, magnetic ESP32-C3 desk buddy.** Sparky has an animated OLED face, listens through a microphone, talks through a speaker, reacts to touch and knocks, and runs on USB or its own battery. Every module snaps together with magnets, so you can swap the shell, the battery base or the electronics rack without tools.
+**A modular, magnetic ESP32-C3 desk buddy.** Sparky has an animated OLED face, listens through a microphone, talks through a speaker, reacts to touch and to being shaken or picked up, and runs on USB or its own battery. Every board slides into its own groove and plugs together with Dupont wires: no screws, no soldered wiring. Wire it outside, slide everything in, and the magnetic shell holds it all together.
 
 <p align="center"><img src="docs/images/sparky_explode.gif" width="480" alt="Sparky snapping apart into its modules and back together"></p>
 
@@ -10,15 +10,16 @@
 [![Hardware: CC BY-SA 4.0](https://img.shields.io/badge/hardware-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE.md)
 [![Firmware: MIT](https://img.shields.io/badge/firmware-MIT-blue.svg)](LICENSE.md)
 
-> **Status: early prototype (v0.1).** The CAD is a first parametric draft built from estimated part sizes and has not been test-printed yet. Measure your parts and adjust [`cad/config.scad`](cad/config.scad) before printing.
+> **Status: early prototype (v0.2).** The CAD is parametric and checked for overlaps and overhangs, but part sizes are estimates and the v0.2 parts have not been test-printed yet. Measure your parts and adjust [`cad/config.scad`](cad/config.scad) before printing.
 
 ## Features
 
-- 1.3" OLED face with animated eyes
+- 1.3" OLED face with animated eyes, speaker right below it
 - I²S microphone (INMP441) and speaker (MAX98357A + 4 Ω speaker)
-- Capacitive touch on the head, knock detection, status LED
-- USB-C power, optional LiPo battery in a magnetic base
-- Four modules that snap together with 6 × 3 mm magnets
+- Capacitive touch on the head, shake / tilt / tap sensing (MPU-6050)
+- USB-C power, optional LiPo in a side bay
+- Slide-in, solderless electronics: wire it outside, slide it in
+- Every part prints without supports
 - Fully parametric OpenSCAD source
 
 ## The modules
@@ -27,11 +28,14 @@
 
 | Module | What it does |
 |---|---|
-| **Outer shell** | Rounded 56 × 52 mm skin with the screen window, mic pinhole, LED hole, speaker grille, USB and switch cutouts. Snaps to the rack crown with 4 magnets. |
-| **Interface collar** | The separate lip between base and shell. Located by filament pins, clamped by the shell. Print it in an accent colour. |
-| **Inner rack** | Reinforced PLA frame (3 mm walls, gussets) that carries every electronic part. |
-| **Crown** | The rack's removable top. Slides in from the back on dovetail rails and carries the mic, touch sensor and shell magnets. Slide it out and the whole rack is open from above for wiring. |
-| **Battery base + lid** | Holds a 503040 LiPo. Snaps to the rack with 4 magnets; the lid snaps on with 4 more. |
+| **Outer shell** | Rounded 64.4 × 56.6 mm skin with the display window, speaker grille, USB-C hole and mic pinhole. Snaps to the rack towers with 4 magnets and holds every inner part in place. |
+| **Interface collar** | The band between base and shell. Located by filament pins, clamped by the shell. Print it in an accent colour. |
+| **Base** | Simple 5 mm plate on four feet. Snaps to the rack with 4 magnets. |
+| **Rack** | The body: floor, side walls with a LiPo bay on each side, ledges for the middle plate, rails for the board, and two towers that carry the shell magnets. Open at the back. |
+| **Face frame** | The front: the display slides down into its groove, the speaker stands behind the grille below it. |
+| **Board slide** | The ESP32-C3 on its expansion board slides in along the floor rails, USB-C at the back. |
+| **Middle plate** | Slides in on the wall ledges: MPU-6050 in a groove on top, amp in a groove underneath, wire holes in the corners. |
+| **Lid** | Drops in between the towers: round mic in a pocket at the front, touch pad at the back. |
 
 ## Repository layout
 
@@ -40,12 +44,12 @@ sparky/
 ├── cad/                 OpenSCAD source (edit config.scad first)
 │   ├── config.scad      all dimensions + the module interface spec
 │   ├── sparky.scad      assembly and part selector
-│   └── parts/           shell, collar, rack, crown, base, lid
+│   └── parts/           shell, collar, base, rack, face, plate, lid
 ├── .github/workflows/   CI: builds STLs, renders and firmware; publishes releases
 ├── firmware/            PlatformIO project for the ESP32-C3
 ├── hardware/            BOM, wiring diagram, pin map
 ├── docs/                build guide
-└── scripts/             helper scripts (STL export)
+└── scripts/             STL export, renders, fit and overhang checks
 ```
 
 ## Build it
@@ -70,6 +74,7 @@ STLs are **built from the OpenSCAD source by CI**, never committed:
 
 ```bash
 ./scripts/export_stl.sh      # STLs into stl/
+./scripts/check_fit.sh       # no overlaps, every part on the bed
 ./scripts/render_png.sh      # preview images into renders/
 ./scripts/render_gif.sh      # the explode animation (needs ImageMagick)
 ```

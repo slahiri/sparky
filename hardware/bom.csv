@@ -1,17 +1,15 @@
 qty,part,spec,notes,example_source
 1,ESP32-C3 SuperMini,USB-C,Main controller,
-1,ESP32-C3 SuperMini expansion board,LiPo charging + pin breakout,Lets everything plug in with Dupont wires,https://www.amazon.in/dp/B0F1LNNC7G
-1,1.3 inch OLED,128x64 I2C SH1106 or SSD1306,Face,
-1,MAX98357A,I2S class-D amplifier,Speaker driver,
-1,INMP441,I2S MEMS microphone,Mic,
-1,Speaker 2040,4 ohm 2 W 20x40 mm,Fires through the right side,
-1,TTP223,Capacitive touch module,Pat the head,
-1,SW420,Vibration sensor module,Knock / shake detection,
-1,5 mm LED + 220 ohm resistor,Any colour,Status light,https://www.amazon.in/dp/B0DRVVKX8L
-1,SPDT slide switch,8.6 x 3.6 mm,Battery on/off,
-1,LiPo 503040,3.7 V ~600 mAh with 2-pin plug,Optional; check plug and polarity,https://www.amazon.in/dp/B0D517DPBJ
-24,Neodymium magnet,6 x 3 mm disc,All N faces up; 60-pack recommended,https://www.amazon.in/dp/B0B5RGXYQM
-5,M2 x 8 self-tapping screw,,4 for the OLED + 1 optional crown lock,https://www.amazon.in/dp/B07VWKBHYZ
-4,1.75 mm filament pin,~5 mm long,Locates the collar on the base,
-~20,Dupont jumper wires,female-female 10 cm,,
+1,ESP32-C3 SuperMini expansion board,LiPo charging + pin breakout,Every module plugs into its pin trios,https://www.amazon.in/dp/B0F1LNNC7G
+1,1.3 inch OLED,128x64 I2C SH1106 or SSD1306,Face; slides into the face frame,
+1,GY-521 MPU-6050,I2C accelerometer + gyro,Shake / tilt / tap; top of the middle plate,
+1,MAX98357A,I2S class-D amplifier,Speaker driver; under the middle plate,
+1,INMP441,I2S MEMS microphone (round board),Mic; pocket in the lid,
+1,Speaker 2040,4 ohm 2 W 20x40 mm,Behind the front grille,
+1,TTP223,Capacitive touch module,Pat the head; on top of the lid,
+1,LiPo 503040,3.7 V ~600 mAh with 2-pin plug,Optional; slides into a side bay. Check plug and polarity,https://www.amazon.in/dp/B0D517DPBJ
+16,Neodymium magnet,6 x 3 mm disc,8 pairs; all N faces up,https://www.amazon.in/dp/B0B5RGXYQM
+4,1.75 mm filament pin,~5 mm long,2 locate the collar; 2 locate the face frame,
+4,Dupont Y-splitter,female to 2x female,Shared SDA SCL BCLK WS,
+~25,Dupont jumper wires,female-female 10-20 cm,,
 1,Super glue (CA),,Fix magnets in pockets,

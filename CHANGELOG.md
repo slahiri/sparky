@@ -2,10 +2,18 @@
 
 ## Unreleased
 
-- Removable crown: the rack's top is now a separate part that slides in from the back on dovetail rails, so the rack can be wired from above
-- Shell magnets moved into the crown at (±17, −15) and (±17, 17); crown is 4 mm thick
-- Fixed: rack corners clashed with the collar's rounded opening (rack now has R3.8 corners)
-- Speaker cradle lowered to clear the new rail bars
+Slide-in, solderless redesign (v0.2). Not yet test-printed.
+
+- New layout: every board slides into its own groove and plugs together with Dupont wires. Wire it outside, then slide it in
+- New parts: **face frame** (display groove + speaker behind a front grille), **middle plate** (MPU-6050 on top, amp underneath, corner wire holes) and a drop-in **lid** (round INMP441 mic pocket + TTP223 touch pad). The dovetail crown and the battery lid are gone
+- Rack: open back, board rails on the floor, wall ledges for the plate, a LiPo 503040 bay on each side, and two top towers that carry the shell magnets
+- Base is now a simple 5 mm plate on feet; the battery moved into the side bays
+- Bigger body: 64.4 × 56.6 × 76 mm. Shell is R8 outside and R6 inside so the wall stays 2 mm at the corners
+- Electronics: SW420, status LED and power switch removed; MPU-6050 added (I²C 0x68, INT on GPIO 10). No screws
+- Every part prints without supports, in the orientation it's exported in
+- New checks: `scripts/check_fit.sh` (no overlaps, every part on the bed) and `scripts/overhangs.py`
+- Firmware test: shake / tap shows surprised eyes; LED and knock test removed
+- New renders, explode GIF and wiring diagram
 
 ## v0.1.0 - 2026-10-16
 

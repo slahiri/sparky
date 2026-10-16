@@ -1,10 +1,10 @@
 # Sparky
 
-A modular, magnetic ESP32-C3 desk buddy with an animated OLED face, a microphone, a speaker, touch and knock sensing, and an optional battery.
+A modular, magnetic ESP32-C3 desk buddy with an animated OLED face, a microphone, a speaker, touch and motion sensing, and an optional battery. Everything slides in and plugs together: no screws, no soldered wiring.
 
 ![Sparky snapping apart into its modules](images/sparky_explode.gif)
 
-> **v0.1 prototype.** Part sizes are estimates and nothing has been test-printed yet. Measure your parts and adjust [config.scad](https://github.com/slahiri/sparky/blob/main/cad/config.scad) first.
+> **v0.2 prototype.** Part sizes are estimates and the v0.2 parts have not been test-printed yet. Measure your parts and adjust [config.scad](https://github.com/slahiri/sparky/blob/main/cad/config.scad) first.
 
 ## Build guide
 
@@ -19,7 +19,7 @@ A modular, magnetic ESP32-C3 desk buddy with an animated OLED face, a microphone
 
 ![Exploded view](images/sparky_exploded.png)
 
-From the bottom up: **battery lid → battery base → interface collar → inner rack → outer shell.** Magnets join the lid to the base, the base to the rack, and the rack crown to the shell ceiling. The collar is clamped between the base and the shell.
+From the bottom up: **base → collar → rack → shell.** Inside the rack, the **face frame** (display and speaker) stands at the front, the **board** and the **middle plate** (motion sensor on top, amp underneath) slide in from the back, a LiPo can slide into either side bay, and the **lid** (mic and touch pad) drops in on top. Magnets join the base to the rack and the rack towers to the shell ceiling; the shell holds everything else in place.
 
 ## Get the files
 

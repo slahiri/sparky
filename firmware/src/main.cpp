@@ -1,6 +1,7 @@
 // Sparky hardware test.
-// Checks every module: animated eyes on the OLED, a beep on touch, the LED
-// on a knock, and a live microphone level bar. Serial log at 115200.
+// Checks every module: animated eyes on the OLED, a beep on touch, surprised
+// eyes when you shake or tap Sparky (MPU-6050), and a live microphone level
+// bar. Serial log at 115200.
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -15,11 +16,11 @@ U8G2_SH1106_128X64_NONAME_F_HW_I2C oled(U8G2_R0, U8X8_PIN_NONE);
 static const i2s_port_t I2S_PORT = I2S_NUM_0;
 static const int SAMPLE_RATE = 16000;
 
-static bool oledFound = false;
+static bool oledFound = false, mpuFound = false;
 static int micLevel = 0;            // 0..100
-static uint32_t lastBlink = 0, blinkUntil = 0, happyUntil = 0, ledUntil = 0;
-static int lastVibration = -1;
+static uint32_t lastBlink = 0, blinkUntil = 0, happyUntil = 0, surpriseUntil = 0;
 static bool lastTouch = false;
+static float lastG = 1.0f;
 
 static void i2sInit() {
   i2s_config_t cfg = {};
@@ -72,13 +73,41 @@ static int readMicLevel() {
   return constrain(map(peak, 0, 20000, 0, 100), 0, 100);
 }
 
+static bool i2cPresent(uint8_t addr) {
+  Wire.beginTransmission(addr);
+  return Wire.endTransmission() == 0;
+}
+
+static void mpuInit() {
+  Wire.beginTransmission(MPU_ADDR);
+  Wire.write(0x6B);                                   // PWR_MGMT_1: wake up
+  Wire.write(0x00);
+  Wire.endTransmission();
+}
+
+// Total acceleration in g (about 1.0 at rest), or -1 if the read failed.
+static float mpuReadG() {
+  Wire.beginTransmission(MPU_ADDR);
+  Wire.write(0x3B);                                   // ACCEL_XOUT_H
+  if (Wire.endTransmission(false) != 0 || Wire.requestFrom((int)MPU_ADDR, 6) != 6) return -1;
+  float sum = 0;
+  for (int i = 0; i < 3; i++) {
+    int16_t raw = (Wire.read() << 8) | Wire.read();
+    float a = raw / 16384.0f;                         // +-2 g range
+    sum += a * a;
+  }
+  return sqrtf(sum);
+}
+
 static void drawFace(uint32_t now) {
   oled.clearBuffer();
   bool blinking = now < blinkUntil;
   bool happy = now < happyUntil;
+  bool surprised = now < surpriseUntil;
   for (int side = 0; side < 2; side++) {
     int x = side == 0 ? 22 : 74;
-    if (blinking)      oled.drawBox(x, 30, 32, 4);
+    if (surprised)     oled.drawCircle(x + 16, 28, 15);
+    else if (blinking) oled.drawBox(x, 30, 32, 4);
     else if (happy)    { oled.drawDisc(x + 16, 30, 14, U8G2_DRAW_UPPER_RIGHT | U8G2_DRAW_UPPER_LEFT); }
     else               oled.drawRBox(x, 12, 32, 34, 8);
   }
@@ -90,24 +119,22 @@ static void drawFace(uint32_t now) {
 void setup() {
   Serial.begin(115200);
   pinMode(PIN_TOUCH, INPUT);
-  pinMode(PIN_VIBRATION, INPUT);
-  pinMode(PIN_LED, OUTPUT);
+  pinMode(PIN_MPU_INT, INPUT);
 
-  Wire.begin(PIN_OLED_SDA, PIN_OLED_SCL);
-  Wire.beginTransmission(0x3C);                       // u8g2 does not report a missing display
-  oledFound = Wire.endTransmission() == 0;
-  Serial.printf("OLED %s at 0x3C\n", oledFound ? "found" : "NOT found");
+  Wire.begin(PIN_I2C_SDA, PIN_I2C_SCL);
+  oledFound = i2cPresent(OLED_ADDR);                  // u8g2 does not report a missing display
+  mpuFound = i2cPresent(MPU_ADDR);
+  Serial.printf("OLED %s at 0x3C, MPU-6050 %s at 0x68\n", oledFound ? "found" : "NOT found", mpuFound ? "found" : "NOT found");
   if (oledFound) {
     oled.setBusClock(400000);
     oled.begin();
   }
+  if (mpuFound) mpuInit();
 
   i2sInit();
-  digitalWrite(PIN_LED, HIGH);
   beep(660, 90);
   beep(990, 120);
-  digitalWrite(PIN_LED, LOW);
-  Serial.println("Sparky hardware test ready: touch = beep, knock = LED, talk = level bar");
+  Serial.println("Sparky hardware test ready: touch = beep, shake = surprised eyes, talk = level bar");
 }
 
 void loop() {
@@ -121,13 +148,16 @@ void loop() {
   }
   lastTouch = touch;
 
-  int vib = digitalRead(PIN_VIBRATION);
-  if (lastVibration >= 0 && vib != lastVibration) {
-    Serial.println("Knock");
-    ledUntil = now + 300;
+  if (mpuFound) {
+    float g = mpuReadG();
+    if (g > 0) {
+      if (fabsf(g - lastG) > 0.35f && now > surpriseUntil) {
+        Serial.printf("Shake (%.2f g)\n", g);
+        surpriseUntil = now + 800;
+      }
+      lastG = g;
+    }
   }
-  lastVibration = vib;
-  digitalWrite(PIN_LED, now < ledUntil ? HIGH : LOW);
 
   micLevel = (micLevel * 3 + readMicLevel()) / 4;
 

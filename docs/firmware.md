@@ -4,7 +4,7 @@ The firmware is a [PlatformIO](https://platformio.org) project in [firmware/](ht
 
 - Animated eyes on the OLED that blink
 - A beep on start-up and when you touch the head
-- The LED flashes when you knock on the desk
+- Surprised eyes when you shake or tap Sparky (MPU-6050)
 - A live microphone level bar under the eyes
 
 ## Flash it
@@ -20,7 +20,7 @@ Use a USB data cable, not a charge-only one. If the upload doesn't start, hold *
 
 ## Troubleshooting
 
-- **"OLED NOT found":** check SDA/SCL (GPIO 8/9). Most 1.3" modules use the SH1106 driver; for an SSD1306, change the driver line at the top of `main.cpp`.
+- **"OLED NOT found" or "MPU-6050 NOT found":** check SDA/SCL (GPIO 8/9) and the two Y-splitters. Most 1.3" modules use the SH1106 driver; for an SSD1306, change the driver line at the top of `main.cpp`.
 - **No sound:** check the amp has power and that BCLK/LRC/DIN go to GPIO 4/5/6.
 - **Level bar stuck at zero:** check the mic's L/R pin is tied to GND and SD goes to GPIO 7.
 

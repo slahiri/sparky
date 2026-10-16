@@ -26,11 +26,11 @@ jobs:
           done
       - name: Render previews
         run: xvfb-run -a ./scripts/render_png.sh renders
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: sparky-stl
           path: stl/*.stl
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: sparky-renders
           path: renders/*.png

@@ -1,0 +1,3 @@
+# Generated meshes: don't diff them, collapse them in pull requests
+*.stl -diff linguist-generated=true
+*.png binary

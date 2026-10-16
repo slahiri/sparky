@@ -1,0 +1,9 @@
+# PlatformIO
+firmware/.pio/
+firmware/.vscode/
+# OpenSCAD / editors
+*.bak
+*.scad~
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 600" font-family="Helvetica, Arial, sans-serif">
+<rect width="680" height="600" fill="#ffffff"/>
+<rect x="250" y="50" width="180" height="420" rx="12" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.8"/>
+<g font-size="12" fill="#444441">
+<text x="260" y="94">GPIO8 SDA</text><text x="260" y="124">GPIO9 SCL</text><text x="260" y="224">GPIO3</text><text x="260" y="324">GPIO10</text><text x="260" y="424">GPIO1</text>
+<text x="420" y="114" text-anchor="end">BCLK GPIO4</text><text x="420" y="144" text-anchor="end">WS GPIO5</text><text x="420" y="174" text-anchor="end">DOUT GPIO6</text><text x="420" y="334" text-anchor="end">DIN GPIO7</text>
+</g>
+<text x="340" y="256" text-anchor="middle" font-size="14" font-weight="bold" fill="#2C2C2A">ESP32-C3 SuperMini</text>
+<text x="340" y="276" text-anchor="middle" font-size="12" fill="#5F5E5A">on expansion board</text>
+<g font-size="14" font-weight="bold">
+<rect x="40" y="70" width="140" height="70" rx="8" fill="#E1F5EE" stroke="#0F6E56"/><text x="110" y="100" text-anchor="middle" fill="#085041">1.3" OLED</text>
+<rect x="40" y="194" width="140" height="52" rx="8" fill="#FAEEDA" stroke="#854F0B"/><text x="110" y="216" text-anchor="middle" fill="#633806">TTP223 touch</text>
+<rect x="40" y="294" width="140" height="52" rx="8" fill="#FAEEDA" stroke="#854F0B"/><text x="110" y="316" text-anchor="middle" fill="#633806">SW420 vibration</text>
+<rect x="40" y="394" width="140" height="52" rx="8" fill="#FAEEDA" stroke="#854F0B"/><text x="110" y="416" text-anchor="middle" fill="#633806">LED</text>
+<rect x="500" y="70" width="140" height="140" rx="8" fill="#EEEDFE" stroke="#534AB7"/><text x="570" y="194" text-anchor="middle" fill="#3C3489">MAX98357A</text>
+<rect x="500" y="230" width="140" height="44" rx="8" fill="#EEEDFE" stroke="#534AB7"/><text x="570" y="257" text-anchor="middle" fill="#3C3489">Speaker 4Ω 2W</text>
+<rect x="500" y="300" width="140" height="100" rx="8" fill="#EEEDFE" stroke="#534AB7"/><text x="590" y="344" text-anchor="middle" fill="#3C3489">INMP441</text>
+</g>
+<g font-size="12">
+<text x="110" y="122" text-anchor="middle" fill="#0F6E56">SDA · SCL · 3V3</text><text x="110" y="234" text-anchor="middle" fill="#854F0B">OUT · 3V3</text><text x="110" y="334" text-anchor="middle" fill="#854F0B">DO · 3V3</text><text x="110" y="434" text-anchor="middle" fill="#854F0B">220Ω to GND</text>
+<text x="512" y="114" fill="#534AB7">BCLK</text><text x="512" y="144" fill="#534AB7">LRC</text><text x="512" y="174" fill="#534AB7">DIN</text><text x="628" y="114" text-anchor="end" fill="#534AB7">VIN</text>
+<text x="512" y="334" fill="#534AB7">SD</text><text x="512" y="354" fill="#534AB7">SCK</text><text x="512" y="374" fill="#534AB7">WS</text><text x="590" y="366" text-anchor="middle" fill="#534AB7">3V3 · L/R→GND</text>
+</g>
+<g stroke-width="1.6" fill="none">
+<path d="M180 90H250M180 120H250" stroke="#1D9E75"/>
+<path d="M180 220H250M180 320H250M180 420H250" stroke="#BA7517"/>
+<path d="M430 110H500M430 140H500M430 170H500M430 330H500M455 110V350H500M472 140V370H500" stroke="#7F77DD"/>
+<path d="M570 210V230" stroke="#888780"/>
+</g>
+<circle cx="455" cy="110" r="3" fill="#7F77DD"/><circle cx="472" cy="140" r="3" fill="#7F77DD"/>
+<rect x="40" y="490" width="600" height="56" rx="8" fill="#F1EFE8" stroke="#B4B2A9"/>
+<g font-size="12" fill="#444441" text-anchor="middle">
+<text x="340" y="512">3V3 → OLED, touch, SW420, mic   ·   Amp VIN → 5V (USB) or 3.7 V rail (battery)</text>
+<text x="340" y="532">GND → every module   ·   LED: GPIO1 → 220Ω → LED → GND</text>
+</g>
+<g font-size="12" fill="#444441"><path d="M90 575H120" stroke="#1D9E75" stroke-width="2"/><text x="128" y="579">I²C</text><path d="M220 575H250" stroke="#7F77DD" stroke-width="2"/><text x="258" y="579">I²S audio (shared clock)</text><path d="M450 575H480" stroke="#BA7517" stroke-width="2"/><text x="488" y="579">Digital I/O</text></g>
+</svg>

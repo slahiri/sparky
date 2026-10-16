@@ -1,5 +1,6 @@
-// Interface collar: the band between the base and the shell. The rack floor
-// passes through it; 2 filament pins locate it on the base; the shell clamps it.
+// Interface collar: the accent band between the rack's solid bottom and the
+// shell. The rack passes through it; 2 filament pins locate it; the shell
+// clamps it.
 include <../config.scad>
 
 module collar() {

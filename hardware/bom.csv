@@ -4,12 +4,13 @@ qty,part,spec,notes,example_source
 1,1.3 inch OLED,128x64 I2C SH1106 or SSD1306,Face; slides into the face frame,
 1,GY-521 MPU-6050,I2C accelerometer + gyro,Shake / tilt / tap; left groove on the middle plate,
 1,MAX98357A,I2S class-D amplifier,Speaker driver; right groove on the middle plate,
-1,INMP441,I2S MEMS microphone (round board),Mic; pocket in the lid,
+1,INMP441,I2S MEMS microphone (round board),Mic; pocket in the rack top,
 1,Speaker 2040,4 ohm 2 W 20x40 mm,Behind the front grille,
-1,TTP223,Capacitive touch module,Pat the head; on top of the lid,
+1,TTP223,Capacitive touch module,Pat the head; on the rack top,
 1,LiPo 503040,3.7 V ~600 mAh with 2-pin plug,Optional; slides in along a side wall. Check plug and polarity,https://www.amazon.in/dp/B0D517DPBJ
-16,Neodymium magnet,6 x 3 mm disc,8 pairs; all N faces up,https://www.amazon.in/dp/B0B5RGXYQM
+8,Neodymium magnet,6 x 3 mm disc,4 pairs (rack towers to shell); all N faces up,https://www.amazon.in/dp/B0B5RGXYQM
 4,1.75 mm filament pin,~5 mm long,2 locate the collar; 2 locate the face frame,
 4,Dupont Y-splitter,female to 2x female,Shared SDA SCL BCLK WS,
 ~25,Dupont jumper wires,female-female 10-20 cm,,
 1,Super glue (CA),,Fix magnets in pockets,
+4,Rubber feet,stick-on,Optional,

@@ -4,7 +4,7 @@
 # Usage: scripts/check_fit.sh   (run scripts/export_stl.sh first)
 set -euo pipefail
 cd "$(dirname "$0")/.."
-parts=(shell collar base rack face lid)
+parts=(shell collar rack face front)
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
@@ -17,6 +17,7 @@ for ((i = 0; i < ${#parts[@]}; i++)); do
   for ((j = i + 1; j < ${#parts[@]}; j++)); do
     a=${parts[$i]} b=${parts[$j]}
     printf 'intersection() { import("%s"); import("%s"); }\n' "$tmp/$a.stl" "$tmp/$b.stl" > "$tmp/x.scad"
+    rm -f "$tmp/x.stl"
     openscad -q -o "$tmp/x.stl" "$tmp/x.scad" 2>/dev/null || true
     vol=$(python3 scripts/stl_volume.py "$tmp/x.stl")
     if awk -v v="$vol" 'BEGIN { exit !(v > 0.5) }'; then

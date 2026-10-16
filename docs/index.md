@@ -19,7 +19,7 @@ A modular, magnetic ESP32-C3 desk buddy with an animated OLED face, a microphone
 
 ![Exploded view](images/sparky_exploded.png)
 
-From the bottom up: **base → collar → rack → shell.** Inside the rack, the **face frame** (display and speaker) stands at the front, the **board** slides in along the floor and the **MPU-6050** and **amp** slide into grooves on the fixed middle plate, a LiPo can slide in along either side wall, and the **lid** (mic and touch pad) drops in on top. Magnets join the base to the rack and the rack towers to the shell ceiling; the shell holds everything else in place.
+**Rack → collar → shell**, with the **face frame** and its **front plate** at the front. The rack is one print: Sparky stands on its solid bottom, the ESP32 board slides in along the floor, the **MPU-6050** and **amp** slide into grooves on the fixed middle plate, a LiPo can slide in along either side wall, and the mic and touch pad sit on the fixed top. All wiring drops down a channel at the back. Four magnet pairs join the rack towers to the shell ceiling; the shell holds everything else in place.
 
 ## Get the files
 

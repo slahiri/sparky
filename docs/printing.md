@@ -6,21 +6,22 @@ Download the STLs from the [latest release](https://github.com/slahiri/sparky/re
 |---|---|---|---|
 | Outer shell | `sparky_shell.stl` | Upside down, on its top | The display window top is a 31 mm bridge. The rounded top edge overhangs a little for the first ~2 mm: print the first layers slowly |
 | Interface collar | `sparky_collar.stl` | Flat | Accent colour looks great |
-| Base | `sparky_base.stl` | Upside down, feet up | |
-| Rack | `sparky_rack.stl` | Upright on its floor | Structural: see settings below. The middle plate is a 55 mm bridge and the back beam a 40 mm one: turn on bridge cooling |
+| Rack | `sparky_rack.stl` | Upright on its bottom | Structural: see settings below. The middle plate (55 mm) and the top (40 mm) are bridges: turn on bridge cooling |
 | Face frame | `sparky_face.stl` | Face down | Every shelf and stop grows straight off the bed |
-| Lid | `sparky_lid.stl` | Flat, top up | |
+| Front plate | `sparky_front.stl` | Face down, pegs up | If the pegs are too tight or loose, change `peg_hole` in config.scad |
 
 ![The rack](images/part_rack.png)
 
 ## Recommended PLA settings
 
-| Setting | Shell, collar, base, lid | Rack, face frame |
+| Setting | Shell, collar, front plate | Rack, face frame |
 |---|---|---|
 | Layer height | 0.2 mm | 0.2 mm |
 | Walls | 3 | 5 |
 | Infill | 15 % gyroid | 30 % gyroid |
 | Supports | none | none |
+
+For a quick fit test of the rack, 2 walls, 3 top / 2 bottom layers and 5 % infill use about 25 g of PLA.
 
 Keep PLA parts out of hot cars and direct sun: PLA softens around 55 °C.
 

@@ -18,6 +18,7 @@
 - I²S microphone (INMP441) and speaker (MAX98357A + 4 Ω speaker)
 - Capacitive touch on the head, shake / tilt / tap sensing (MPU-6050)
 - USB-C power, optional LiPo slid in along a side wall
+- Only the shell comes off: everything else slides in from the back or the front
 - Slide-in, solderless electronics: wire it outside, slide it in
 - Every part prints without supports
 - Fully parametric OpenSCAD source
@@ -29,12 +30,10 @@
 | Module | What it does |
 |---|---|
 | **Outer shell** | Rounded 64.4 × 56.6 mm skin with the display window, speaker grille, USB-C hole and mic pinhole. Snaps to the rack towers with 4 magnets and holds every inner part in place. |
-| **Interface collar** | The band between base and shell. Located by filament pins, clamped by the shell. Print it in an accent colour. |
-| **Base** | Simple 5 mm plate on four feet. Snaps to the rack with 4 magnets. |
-| **Rack** | The body: floor, side walls, rails for the board, a fixed middle plate with grooves for the MPU-6050 and the amp, and two towers that carry the shell magnets. Open at the back: the boards and an optional LiPo slide in from there. |
-| **Face frame** | The front: the display slides down into its groove, the speaker stands behind the grille below it. |
-| **Board slide** | The ESP32-C3 on its expansion board slides in along the floor rails, USB-C at the back. |
-| **Lid** | Drops in between the towers: round mic in a pocket at the front, touch pad at the back. |
+| **Interface collar** | The accent band between the rack's bottom and the shell. Located by filament pins, clamped by the shell. |
+| **Rack** | The body, one print: a solid bottom Sparky stands on, side walls, floor rails for the ESP32 board, a fixed middle plate with grooves for the MPU-6050 and the amp, and a fixed top that holds the mic and touch pad over openings. The plate and top stop 6 mm short of the open back: that gap is the wire channel. |
+| **Face frame** | The front: the display slides into its groove and the speaker sits in its pocket below. Stands on two pins in the rack floor. |
+| **Front plate** | The display window and speaker grille. Presses onto the face frame with 4 round pegs; notches on both sides let you pull it off to reach the display and speaker. |
 
 ## Repository layout
 
@@ -43,7 +42,7 @@ sparky/
 ├── cad/                 OpenSCAD source (edit config.scad first)
 │   ├── config.scad      all dimensions + the module interface spec
 │   ├── sparky.scad      assembly and part selector
-│   └── parts/           shell, collar, base, rack, face, lid
+│   └── parts/           shell, collar, rack, face, front
 ├── .github/workflows/   CI: builds STLs, renders and firmware; publishes releases
 ├── firmware/            PlatformIO project for the ESP32-C3
 ├── hardware/            BOM, wiring diagram, pin map

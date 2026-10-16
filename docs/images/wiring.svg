@@ -18,7 +18,7 @@
 <rect x="30" y="140" width="170" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56"/><text x="115" y="164" text-anchor="middle" fill="#085041">MPU-6050</text>
 <text x="115" y="182" text-anchor="middle" font-size="11" font-weight="normal" fill="#0F6E56">plate, left groove, 0x68</text>
 <rect x="30" y="360" width="170" height="52" rx="8" fill="#FAEEDA" stroke="#854F0B"/><text x="115" y="384" text-anchor="middle" fill="#633806">TTP223 touch</text>
-<text x="115" y="400" text-anchor="middle" font-size="11" font-weight="normal" fill="#854F0B">lid, under the shell top</text>
+<text x="115" y="400" text-anchor="middle" font-size="11" font-weight="normal" fill="#854F0B">on the top, under the shell</text>
 </g>
 <!-- right modules -->
 <g font-size="14" font-weight="bold">
@@ -26,7 +26,7 @@
 <text x="645" y="126" text-anchor="middle" font-size="11" font-weight="normal" fill="#534AB7">plate, right groove</text>
 <text x="645" y="160" text-anchor="middle" font-size="11" font-weight="normal" fill="#534AB7">VIN 5V, GAIN/SD open</text>
 <rect x="560" y="300" width="170" height="64" rx="8" fill="#EEEDFE" stroke="#534AB7"/><text x="645" y="324" text-anchor="middle" fill="#3C3489">INMP441 mic</text>
-<text x="645" y="342" text-anchor="middle" font-size="11" font-weight="normal" fill="#534AB7">lid pocket, L/R to GND</text>
+<text x="645" y="342" text-anchor="middle" font-size="11" font-weight="normal" fill="#534AB7">top pocket, L/R to GND</text>
 <rect x="560" y="200" width="170" height="44" rx="8" fill="#FAECE7" stroke="#993C1D"/><text x="645" y="227" text-anchor="middle" fill="#712B13">Speaker 2040</text>
 <rect x="560" y="410" width="170" height="44" rx="8" fill="#E6F1FB" stroke="#185FA5"/><text x="645" y="437" text-anchor="middle" fill="#0C447C">LiPo 503040 (optional)</text>
 </g>

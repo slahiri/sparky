@@ -1,57 +1,41 @@
 # Assembly
 
-Sparky is built from the bottom up and from the back in. Do all the wiring outside the body, then slide each part into place.
+Wire everything outside Sparky first, then slide it in. Only the shell comes off; the rest goes in from the back and the front.
 
 ## 1. Set the magnets (do this first)
 
-Every magnet goes in with its **north face pointing up**, towards the top of the robot. That way each pair attracts.
-
-The easy way to get it right every time:
-
-1. Glue a magnet into a pocket on the first part.
-2. Let a second magnet snap onto it.
-3. Put a drop of glue in the matching pocket of the second part.
-4. Press the second part onto the stacked magnet and hold for 30 seconds.
-
-The second magnet ends up facing the correct way automatically. Mark the north faces with a marker before you start.
-
-| Joint | Pockets |
-|---|---|
-| Base ↔ rack | 4 in the base top, 4 under the rack floor |
-| Rack ↔ shell | 4 in the tops of the rack's two towers, 4 in the shell ceiling bosses |
+Every magnet goes in with its **north face pointing up**. Glue 4 magnets into the tops of the rack's two towers, let 4 more snap onto them, put a drop of glue in each shell ceiling boss and lower the shell straight down onto them. Hold for 30 seconds. The shell's magnets end up facing the right way automatically.
 
 ## 2. Pins
 
-Push 5 mm pieces of 1.75 mm filament into the pin holes: two on the back of the base (for the collar) and two in the front of the rack floor (for the face frame).
+Push 5 mm pieces of 1.75 mm filament into the pin holes: two at the back of the rack's bottom (for the collar) and two at the front of the rack floor (for the face frame).
 
-## 3. Load the face frame
+## 3. Prepare the modules
 
-1. **Speaker:** stand it behind the grille, cone facing forward. The stop bars hold it from behind.
-2. **Display:** slide the OLED down into the groove from the top, glass facing forward, pins at the top. It stops on the shelf above the speaker.
-3. Plug the display's four wires onto its pins.
+1. Plug the jumpers onto the MPU-6050, the amp, the mic and the touch pad (see [Wiring](wiring.md)).
+2. Screw the speaker wires into the amp's terminal.
+3. Plug every jumper onto the expansion board, with the four Y-splitters on the shared lines.
 
-## 4. Get the sensor boards ready
+## 4. Top sensors
 
-Screw the speaker wires into the amp's terminal and plug the jumpers onto the MPU-6050 and the amp. They slide into the rack in step 7.
+1. **Mic:** drop the round INMP441 into its pocket on the top, chip side down, so its sound hole faces up. It sits on a thin rim; its pins hang through the opening.
+2. **Touch pad:** lay the TTP223 over the rectangular opening at the back.
+3. Feed both sets of wires down the channel at the back.
 
-## 5. Load the lid
+## 5. Slide in from the back
 
-1. **Mic:** drop the round INMP441 into the pocket, chip side down, so its sound hole faces up.
-2. **Touch pad:** lay the TTP223 on top at the back, pins through the slot.
-3. Plug the jumpers on from underneath.
+1. Drop the collar over the rack onto its pins.
+2. Slide the **MPU-6050** (left, header at the back) and the **amp** (right, terminal at the front) into the two grooves on the middle plate until they hit the front stops.
+3. Optional: slide a **LiPo** in along either side wall, under the plate.
+4. Slide the **ESP32 board** in along the floor rails, USB-C facing back, until it stops. All the wires drop down the back channel to it.
 
-## 6. Wire it up
+## 6. The front
 
-Follow [Wiring](wiring.md). Plug every jumper onto the expansion board, with the four Y-splitters on the shared lines, while the board is still outside.
+1. Stand the **face frame** on the two floor pins at the front.
+2. Put the **speaker** into its pocket, cone forward. The two posts on the rack floor stop it from behind.
+3. Slide the **display** into its groove, glass forward, pins at the top, and plug its wires on.
+4. Press the **front plate** on: its 4 pegs push into the frame. To take it off, lever it at the notch on either side.
 
-## 7. Put it together
+## 7. Close it
 
-1. Put the collar on the base pins, then stand the **rack** in the collar; it snaps to the base.
-2. Stand the **face frame** on the two floor pins at the front.
-3. Slide the **board** in from the back along the floor rails, USB-C facing back, until it stops.
-4. Slide the **MPU-6050** (left, header at the back) and the **amp** (right, terminal at the front) into the two grooves on top of the middle plate until they hit the front stops. Feed the wires down through the plate's corner holes.
-5. Optional: slide a **LiPo** in from the back along either side wall, under the plate, and plug it into the board.
-6. Drop the **lid** in between the two towers. The mic and touch wires hang down through its slots.
-7. Lower the **shell** over everything; it snaps to the towers and holds the face frame and lid in place.
-
-To open it, pull the shell straight up. The lid lifts out, and everything else slides out of the back.
+Lower the **shell** over everything; it snaps to the towers and holds the face frame and collar in place. To open it, pull the shell straight up.

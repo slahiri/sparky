@@ -5,13 +5,12 @@
 include <config.scad>
 use <parts/shell.scad>
 use <parts/collar.scad>
-use <parts/base.scad>
 use <parts/rack.scad>
 use <parts/face.scad>
-use <parts/lid.scad>
+use <parts/front.scad>
 
 /* [View] */
-part = "assembly"; // [assembly, shell, collar, base, rack, face, lid]
+part = "assembly"; // [assembly, shell, collar, rack, face, front]
 explode = 0;       // [0:5:60]
 show_electronics = true;
 show_battery = true;
@@ -38,7 +37,7 @@ module face_parts() {
 }
 module lid_parts() {
   color("#6A4BC2") translate([mic_xy[0], mic_xy[1], lid_top - 2.2]) cylinder(d = mic_d, h = 1.2);
-  color("#C0392B") translate([-touch[0]/2, 6.5, lid_top]) cube([touch[0], touch[1], 1.4]);
+  color("#C0392B") translate([-touch[0]/2, touch_y0, lid_top]) cube([touch[0], touch[1], 1.4]);
 }
 module batteries() for (s = [-1, 1])
   color("#85B7EB") translate([s < 0 ? -rack_xi + 0.6 : rack_xi - 0.6 - battery[0], face_yb + 0.5, in_z + 0.4]) cube(battery);
@@ -46,28 +45,25 @@ module batteries() for (s = [-1, 1])
 // ---------- views ----------
 e = explode;
 if (part == "assembly") {
-  color("#888780") translate([0, 0, -e*0.6]) base();
-  color("#534AB7") translate([0, 0, -e*0.3]) collar();
+  color("#534AB7") translate([0, 0, e*0.5]) collar();
   color("#B9B7AD") rack();
   color("#5DCAA5") translate([0, -e*0.9, 0]) face();
+  color("#1D9E75") translate([0, -e*1.6, 0]) front();
   if (show_electronics) translate([0, -e*0.9, 0]) face_parts();
   if (show_electronics) translate([0, e*1.4, 0]) board_slide();
   if (show_electronics) translate([0, e*1.1, 0]) plate_parts();
   if (show_battery) translate([0, e*1.25, 0]) batteries();
-  color("#B4B2A9") translate([0, 0, e*1.4]) { lid(); }
-  if (show_electronics) translate([0, 0, e*1.4]) lid_parts();
+  if (show_electronics) lid_parts();
   color("#E8825F", 0.95) translate([0, 0, e*3.4]) shell();
 }
 else if (part == "shell")  rotate([180, 0, 0]) translate([0, 0, -shell_z1]) shell();   // top on the bed
 else if (part == "collar") translate([0, 0, -base_top]) collar();
-else if (part == "base")   rotate([180, 0, 0]) translate([0, 0, -base_top]) base();   // top on the bed
-else if (part == "rack")   translate([0, 0, -floor_z]) rack();
-else if (part == "face")   translate([0, 0, -rack_yf]) rotate([90, 0, 0]) translate([0, 0, 0]) face();  // front on the bed
-else if (part == "lid")    translate([0, 0, -rack_top]) lid();
+else if (part == "rack")   rack();                                                      // on its bottom
+else if (part == "face")   translate([0, 0, -(rack_yf + face_t)]) rotate([90, 0, 0]) face();   // front on the bed
+else if (part == "front")  translate([0, 0, -rack_yf]) rotate([90, 0, 0]) front();               // face down, pegs up
 // Parts in their assembled position (used by scripts/check_fit.sh)
 else if (part == "fit_shell")  shell();
 else if (part == "fit_collar") collar();
-else if (part == "fit_base")   base();
 else if (part == "fit_rack")   rack();
 else if (part == "fit_face")   face();
-else if (part == "fit_lid")    lid();
+else if (part == "fit_front")  front();

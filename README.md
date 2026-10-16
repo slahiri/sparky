@@ -54,7 +54,7 @@ sparky/
 4. **Assemble:** [docs/assembly.md](docs/assembly.md)
 5. **Flash the test firmware:** [docs/firmware.md](docs/firmware.md)
 
-Full guide: **https://blog.sid.sh/sparky/**
+Full guide: [docs/](docs/index.md)
 
 ## Customise
 

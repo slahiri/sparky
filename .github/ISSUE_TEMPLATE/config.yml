@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions and show-and-tell
+    url: https://github.com/slahiri/sparky/discussions
+    about: Ask a question or share your build in Discussions.

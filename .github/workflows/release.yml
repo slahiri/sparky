@@ -1,0 +1,41 @@
+name: Release
+
+# Push a tag like v0.2.0 to publish a GitHub Release with fresh STLs,
+# preview renders and the firmware binary.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  cad:
+    uses: ./.github/workflows/cad.yml
+  firmware:
+    uses: ./.github/workflows/firmware.yml
+
+  publish:
+    name: Publish release
+    needs: [cad, firmware]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+      - name: Package
+        run: |
+          cd dist
+          zip -j "sparky-stl-${GITHUB_REF_NAME}.zip" sparky-stl/*.stl
+          cp sparky-firmware/firmware.bin "sparky-firmware-${GITHUB_REF_NAME}.bin"
+          ls -lh
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes=$(awk -v v="## ${GITHUB_REF_NAME}" '$0 ~ "^## " {p = index($0, v) == 1} p' CHANGELOG.md)
+          gh release create "$GITHUB_REF_NAME" \
+            --title "Sparky ${GITHUB_REF_NAME}" \
+            --notes "${notes:-See CHANGELOG.md}" \
+            dist/sparky-stl-*.zip dist/sparky-stl/*.stl dist/sparky-firmware-*.bin dist/sparky-renders/*.png

@@ -1,6 +1,6 @@
 # Printing
 
-STLs are in [stl/](https://github.com/slahiri/sparky/tree/main/stl). They're already placed in their print orientation.
+Download the STLs from the [latest release](https://github.com/slahiri/sparky/releases/latest). CI builds them from the OpenSCAD source, already placed in their print orientation.
 
 | Part | File | Orientation | Notes |
 |---|---|---|---|
@@ -25,4 +25,4 @@ The rack's 3 mm walls with 5 perimeters print almost solid, which is what keeps 
 
 ## Before the full print
 
-Print a test of one magnet pocket (6.2 × 3.2 mm) and one M2 pilot hole. If the magnet is loose, lower `mag_d` in [config.scad](https://github.com/slahiri/sparky/blob/main/cad/config.scad); if it won't go in, raise it. Then regenerate the STLs with `scripts/export_stl.sh`.
+Print a test of one magnet pocket (6.2 × 3.2 mm) and one M2 pilot hole. If the magnet is loose, lower `mag_d` in [config.scad](https://github.com/slahiri/sparky/blob/main/cad/config.scad); if it won't go in, raise it. Then regenerate the STLs with `scripts/export_stl.sh`, or push your change and download them from the CI run.

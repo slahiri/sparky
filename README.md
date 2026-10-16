@@ -4,8 +4,9 @@
 
 ![Sparky assembled](docs/images/sparky_assembled.png)
 
-[![Firmware build](https://github.com/slahiri/sparky/actions/workflows/firmware.yml/badge.svg)](https://github.com/slahiri/sparky/actions/workflows/firmware.yml)
-[![CAD export](https://github.com/slahiri/sparky/actions/workflows/cad.yml/badge.svg)](https://github.com/slahiri/sparky/actions/workflows/cad.yml)
+[![CAD](https://github.com/slahiri/sparky/actions/workflows/cad.yml/badge.svg)](https://github.com/slahiri/sparky/actions/workflows/cad.yml)
+[![Firmware](https://github.com/slahiri/sparky/actions/workflows/firmware.yml/badge.svg)](https://github.com/slahiri/sparky/actions/workflows/firmware.yml)
+[![Release](https://img.shields.io/github/v/release/slahiri/sparky)](https://github.com/slahiri/sparky/releases/latest)
 [![Hardware: CC BY-SA 4.0](https://img.shields.io/badge/hardware-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE.md)
 [![Firmware: MIT](https://img.shields.io/badge/firmware-MIT-blue.svg)](LICENSE.md)
 
@@ -39,7 +40,7 @@ sparky/
 │   ├── config.scad      all dimensions + the module interface spec
 │   ├── sparky.scad      assembly and part selector
 │   └── parts/           shell, collar, rack, base, lid
-├── stl/                 ready-to-print STLs (generated from cad/)
+├── .github/workflows/   CI: builds STLs, renders and firmware; publishes releases
 ├── firmware/            PlatformIO project for the ESP32-C3
 ├── hardware/            BOM, wiring diagram, pin map
 ├── docs/                build guide
@@ -49,7 +50,7 @@ sparky/
 ## Build it
 
 1. **Collect the parts:** [hardware/bom.csv](hardware/bom.csv)
-2. **Print:** [docs/printing.md](docs/printing.md)
+2. **Print:** download the STLs from the [latest release](https://github.com/slahiri/sparky/releases/latest), then follow [docs/printing.md](docs/printing.md)
 3. **Wire:** [hardware/wiring.md](hardware/wiring.md)
 4. **Assemble:** [docs/assembly.md](docs/assembly.md)
 5. **Flash the test firmware:** [docs/firmware.md](docs/firmware.md)
@@ -58,10 +59,17 @@ Full guide: [docs/](docs/index.md)
 
 ## Customise
 
-Everything is driven by [`cad/config.scad`](cad/config.scad). To make your own shell, keep the interface in [docs/interface.md](docs/interface.md) and change only the outside. Regenerate the STLs with:
+Everything is driven by [`cad/config.scad`](cad/config.scad). To make your own shell, keep the interface in [docs/interface.md](docs/interface.md) and change only the outside.
+
+STLs are **built from the OpenSCAD source by CI**, never committed:
+
+- Every push and pull request builds all STLs and preview renders; download them from the run's artifacts.
+- Pushing a tag like `v0.2.0` publishes a [release](https://github.com/slahiri/sparky/releases) with the STLs, renders and firmware.
+- To build locally (OpenSCAD 2021.01 or newer):
 
 ```bash
-./scripts/export_stl.sh
+./scripts/export_stl.sh      # STLs into stl/
+./scripts/render_png.sh      # preview images into renders/
 ```
 
 ## Inspiration
@@ -73,4 +81,4 @@ Sparky stands on the shoulders of other open desk companions, especially [Compag
 - Hardware (CAD, STL, docs, diagrams): [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 - Firmware and scripts: [MIT](LICENSE.md)
 
-See [LICENSE.md](LICENSE.md). Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
+See [LICENSE.md](LICENSE.md). Contributions welcome: see [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).

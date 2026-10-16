@@ -12,9 +12,12 @@ Thanks for helping! Prints, photos, measurements and remixes are all welcome.
 ## Workflow
 
 1. Fork the repo and create a branch.
-2. Edit the OpenSCAD source in `cad/`, never the STLs directly.
-3. Run `./scripts/export_stl.sh` to regenerate `stl/` and commit both.
+2. Edit the OpenSCAD source in `cad/`. **Don't commit STLs**: CI builds them.
+3. Optionally check locally with `./scripts/export_stl.sh` and `./scripts/render_png.sh`.
 4. For firmware changes, run `pio run` in `firmware/`.
-5. Open a pull request describing what changed and how you tested it (printed? flashed?).
+5. Open a pull request against `main` describing what changed and how you tested it (printed? flashed?).
+6. CI must pass (**Build STLs** and **Build firmware**) and a maintainer reviews before merge. The PR's CAD run has the STLs and renders as artifacts, so reviewers can check the geometry without building it.
+
+`main` is protected: all changes go through pull requests.
 
 By contributing you agree that your work is released under the project's licenses (see `LICENSE.md`).

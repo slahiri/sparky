@@ -1,20 +1,40 @@
-name: CAD export
+name: CAD
 
+# Builds every printable STL (and preview renders) from the OpenSCAD source.
+# STLs are never committed: download them from the run's artifacts or from a Release.
 on:
   push:
-    paths: ["cad/**", "scripts/**", ".github/workflows/cad.yml"]
+    branches: [main]
   pull_request:
-    paths: ["cad/**"]
   workflow_dispatch:
+  workflow_call:
 
 jobs:
-  export:
+  stl:
+    name: Build STLs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get update && sudo apt-get install -y openscad
-      - run: ./scripts/export_stl.sh
+      - name: Install OpenSCAD
+        run: sudo apt-get update && sudo apt-get install -y openscad xvfb
+      - name: Export STLs
+        run: ./scripts/export_stl.sh
+      - name: Check every part exported
+        run: |
+          for p in shell collar rack base lid; do
+            test -s "stl/sparky_$p.stl" || { echo "::error::sparky_$p.stl is missing or empty"; exit 1; }
+          done
+      - name: Render previews
+        run: xvfb-run -a ./scripts/render_png.sh renders
       - uses: actions/upload-artifact@v4
         with:
           name: sparky-stl
           path: stl/*.stl
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sparky-renders
+          path: renders/*.png
+      - name: Summary
+        run: |
+          echo "### STLs built from ${GITHUB_SHA::7}" >> "$GITHUB_STEP_SUMMARY"
+          ls -lh stl/*.stl | awk '{print "- `" $9 "` " $5}' >> "$GITHUB_STEP_SUMMARY"

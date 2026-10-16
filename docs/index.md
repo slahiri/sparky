@@ -24,4 +24,4 @@ From the bottom up: **battery lid → battery base → interface collar → inne
 ## Get the files
 
 - Source and STLs: [github.com/slahiri/sparky](https://github.com/slahiri/sparky)
-- Ready-to-print STLs: [stl/](https://github.com/slahiri/sparky/tree/main/stl)
+- Ready-to-print STLs: [latest release](https://github.com/slahiri/sparky/releases/latest) (built automatically from the OpenSCAD source)

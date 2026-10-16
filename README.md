@@ -17,7 +17,7 @@
 - 1.3" OLED face with animated eyes, speaker right below it
 - I²S microphone (INMP441) and speaker (MAX98357A + 4 Ω speaker)
 - Capacitive touch on the head, shake / tilt / tap sensing (MPU-6050)
-- USB-C power, optional LiPo in a side bay
+- USB-C power, optional LiPo slid in along a side wall
 - Slide-in, solderless electronics: wire it outside, slide it in
 - Every part prints without supports
 - Fully parametric OpenSCAD source
@@ -31,10 +31,9 @@
 | **Outer shell** | Rounded 64.4 × 56.6 mm skin with the display window, speaker grille, USB-C hole and mic pinhole. Snaps to the rack towers with 4 magnets and holds every inner part in place. |
 | **Interface collar** | The band between base and shell. Located by filament pins, clamped by the shell. Print it in an accent colour. |
 | **Base** | Simple 5 mm plate on four feet. Snaps to the rack with 4 magnets. |
-| **Rack** | The body: floor, side walls with a LiPo bay on each side, ledges for the middle plate, rails for the board, and two towers that carry the shell magnets. Open at the back. |
+| **Rack** | The body: floor, side walls, rails for the board, a fixed middle plate with grooves for the MPU-6050 and the amp, and two towers that carry the shell magnets. Open at the back: the boards and an optional LiPo slide in from there. |
 | **Face frame** | The front: the display slides down into its groove, the speaker stands behind the grille below it. |
 | **Board slide** | The ESP32-C3 on its expansion board slides in along the floor rails, USB-C at the back. |
-| **Middle plate** | Slides in on the wall ledges: MPU-6050 in a groove on top, amp in a groove underneath, wire holes in the corners. |
 | **Lid** | Drops in between the towers: round mic in a pocket at the front, touch pad at the back. |
 
 ## Repository layout
@@ -44,7 +43,7 @@ sparky/
 ├── cad/                 OpenSCAD source (edit config.scad first)
 │   ├── config.scad      all dimensions + the module interface spec
 │   ├── sparky.scad      assembly and part selector
-│   └── parts/           shell, collar, base, rack, face, plate, lid
+│   └── parts/           shell, collar, base, rack, face, lid
 ├── .github/workflows/   CI: builds STLs, renders and firmware; publishes releases
 ├── firmware/            PlatformIO project for the ESP32-C3
 ├── hardware/            BOM, wiring diagram, pin map

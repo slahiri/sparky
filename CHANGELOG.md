@@ -5,9 +5,9 @@
 Slide-in, solderless redesign (v0.2). Not yet test-printed.
 
 - New layout: every board slides into its own groove and plugs together with Dupont wires. Wire it outside, then slide it in
-- New parts: **face frame** (display groove + speaker behind a front grille), **middle plate** (MPU-6050 on top, amp underneath, corner wire holes) and a drop-in **lid** (round INMP441 mic pocket + TTP223 touch pad). The dovetail crown and the battery lid are gone
-- Rack: open back, board rails on the floor, wall ledges for the plate, a LiPo 503040 bay on each side, and two top towers that carry the shell magnets
-- Base is now a simple 5 mm plate on feet; the battery moved into the side bays
+- New parts: **face frame** (display groove + speaker behind a front grille), and a drop-in **lid** (round INMP441 mic pocket + TTP223 touch pad). The dovetail crown and the battery lid are gone
+- Rack: open back, board rails on the floor, a fixed middle plate with grooves for the MPU-6050 and the amp side by side (only the boards slide), room for a LiPo 503040 along each side wall, and two top towers that carry the shell magnets
+- Base is now a simple 5 mm plate on feet; the battery slides in along a side wall
 - Bigger body: 64.4 × 56.6 × 76 mm. Shell is R8 outside and R6 inside so the wall stays 2 mm at the corners
 - Electronics: SW420, status LED and power switch removed; MPU-6050 added (I²C 0x68, INT on GPIO 10). No screws
 - Every part prints without supports, in the orientation it's exported in

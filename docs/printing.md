@@ -7,16 +7,15 @@ Download the STLs from the [latest release](https://github.com/slahiri/sparky/re
 | Outer shell | `sparky_shell.stl` | Upside down, on its top | The display window top is a 31 mm bridge. The rounded top edge overhangs a little for the first ~2 mm: print the first layers slowly |
 | Interface collar | `sparky_collar.stl` | Flat | Accent colour looks great |
 | Base | `sparky_base.stl` | Upside down, feet up | |
-| Rack | `sparky_rack.stl` | Upright on its floor | Structural: see settings below. The back beam is a 34 mm bridge |
+| Rack | `sparky_rack.stl` | Upright on its floor | Structural: see settings below. The middle plate is a 55 mm bridge and the back beam a 40 mm one: turn on bridge cooling |
 | Face frame | `sparky_face.stl` | Face down | Every shelf and stop grows straight off the bed |
-| Middle plate | `sparky_plate.stl` | Standing on its back edge | Tall and thin: use a brim |
 | Lid | `sparky_lid.stl` | Flat, top up | |
 
 ![The rack](images/part_rack.png)
 
 ## Recommended PLA settings
 
-| Setting | Shell, collar, base, lid | Rack, face frame, plate |
+| Setting | Shell, collar, base, lid | Rack, face frame |
 |---|---|---|
 | Layer height | 0.2 mm | 0.2 mm |
 | Walls | 3 | 5 |

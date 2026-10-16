@@ -4,7 +4,7 @@
 # Usage: scripts/check_fit.sh   (run scripts/export_stl.sh first)
 set -euo pipefail
 cd "$(dirname "$0")/.."
-parts=(shell collar base rack face plate lid)
+parts=(shell collar base rack face lid)
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 

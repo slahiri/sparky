@@ -10,7 +10,7 @@ Any part that keeps these dimensions works with the rest of Sparky. All values l
 | Shell | Z 11 to 76, 2 mm wall, R8 outside, R6 inside |
 | Rack | 59.6 × 49.2 mm (Y −27.6 to 21.6), 45° front corners, R3.5 back corners, Z 7 to 72.4 |
 | Lid | 34 mm wide, between the towers, Z 68.4 to 72.4 |
-| Middle plate | Z 43 to 46, slides on ledges on the walls |
+| Middle plate | Z 43 to 46, part of the rack; grooves for the MPU-6050 (X −11.5) and amp (X 10) |
 | Magnets | 6 × 3 mm, pockets 6.2 × 3.2 mm, all N faces up |
 | Base ↔ rack magnets | (±24, −15), (±24, 16) |
 | Rack ↔ shell magnets | (±23, −15), (±23, 17) at Z 72.4 |

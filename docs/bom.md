@@ -12,7 +12,7 @@ The full list with example links is in [hardware/bom.csv](https://github.com/sla
 | 1 | INMP441 I²S microphone | The round board |
 | 1 | 2040 speaker, 4 Ω 2 W | 20 × 40 mm |
 | 1 | TTP223 touch module | Under the shell top |
-| 1 | LiPo 503040, about 600 mAh | Optional; fits either side bay. Check plug and polarity |
+| 1 | LiPo 503040, about 600 mAh | Optional; slides in along either side wall. Check plug and polarity |
 | 16 | 6 × 3 mm neodymium magnets | 8 pairs |
 | 4 | 1.75 mm filament, about 5 mm long | Locating pins for the collar and face frame |
 | 4 | Dupont Y-splitters | SDA, SCL, BCLK, WS are shared |

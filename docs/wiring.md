@@ -24,6 +24,6 @@ Notes:
 - The INMP441's **L/R pin must go to ground** or the mic sends nothing. Any free G pin works.
 - Never put 5 V on the INMP441 or the MPU-6050; use the V pins (3.3 V). Check your board's V pins really are 3.3 V.
 - Leave the MAX98357A `SD` and `GAIN` pins unconnected (always on, 9 dB).
-- Screw the speaker wires into the amp's terminal **before** you slide the middle plate in: the terminal faces down and you can't reach it afterwards.
+- Screw the speaker wires into the amp's terminal before you slide the amp into its groove.
 - Free pins: GPIO 0, 1, 20, 21. Don't load GPIO 2's signal pin (boot strap); its ground pin is fine.
 - The pin map lives in [`firmware/include/pins.h`](https://github.com/slahiri/sparky/blob/main/firmware/include/pins.h).

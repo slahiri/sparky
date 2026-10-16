@@ -1,9 +1,11 @@
-// Rack: the body everything slides into. Floor, two side walls with a LiPo
-// bay inside each, ledges for the middle plate, rails for the board, and two
-// top towers that carry the shell magnets. The back is open: the board and
-// the middle plate slide in from there, the face frame drops in at the front
-// and the lid drops in between the towers.
-// Prints upright on its floor without supports (all overhangs are 45 deg).
+// Rack: the body everything slides into. Floor, two side walls (a LiPo can
+// slide in along either one), rails for the board, a fixed middle plate with grooves for
+// the MPU-6050 and the amp, and two top towers that carry the shell magnets.
+// The back is open: the board, the two sensor boards and the batteries slide
+// in from there, the face frame drops in at the front and the lid drops in
+// between the towers.
+// Prints upright on its floor without supports. The middle plate is a 55 mm
+// bridge between the walls; the back beam a 40 mm one.
 include <../config.scad>
 
 module tower(s) {   // s = -1 left, +1 right
@@ -18,6 +20,27 @@ module tower(s) {   // s = -1 left, +1 right
   }
 }
 
+// Middle plate: fixed. Two grooves on top (a rail each side with a lip over
+// the board edge, and a front stop); the boards slide in from the back.
+module plate() {
+  difference() {
+    union() {
+      translate([-rack_xi - 0.01, plate_y0, plate_z0]) cube([2*rack_xi + 0.02, rack_yb - plate_y0, plate_t]);
+      for (g = [[mpu_cx, mpu], [amp_cx, amp]]) {
+        cx = g[0]; b = g[1]; w = b[0]/2 + 0.2;
+        for (s = [-1, 1]) {
+          translate([s < 0 ? cx - w - 1.25 : cx + w, groove_y0 - 1, plate_z1 - 0.01]) cube([1.25, rack_yb - groove_y0 + 1, b[2] + 1.01]);   // rail
+          translate([s < 0 ? cx - w - 0.01 : b[0]/2 - 0.55 + cx, groove_y0 + 1, plate_z1 + b[2] + 0.3])
+            cube([w + 0.01 - (b[0]/2 - 0.55), b[1] - 5, 0.7]);                                                                     // lip
+        }
+        translate([cx - w - 1.25, groove_y0 - 1, plate_z1 - 0.01]) cube([2*w + 2.5, 1, 1.5]);                                     // front stop
+      }
+    }
+    for (s = [-1, 1], hy = [hole_yf, hole_yb])
+      translate([s < 0 ? -hole_x[1] : hole_x[0], hy[0], plate_z0 - 1]) cube([hole_x[1] - hole_x[0], hy[1] - hy[0], plate_t + 2]);
+  }
+}
+
 module rack() {
   difference() {
     intersection() {
@@ -28,13 +51,7 @@ module rack() {
           // side wall
           translate([s < 0 ? -rack_xo : rack_xi, face_yb, in_z - 0.01]) cube([rack_t, rack_yb - face_yb, lid_top - in_z + 0.01]);
           tower(s);
-          // LiPo bay rib
-          translate([s < 0 ? -rib_x - rib_t : rib_x, face_yb, in_z - 0.01]) cube([rib_t, rack_yb - face_yb, bay_z1 - in_z]);
           mirror([s < 0 ? 1 : 0, 0, 0]) {
-            // plate ledges: below (45 deg) and above
-            along_y(face_yb, rack_yb)
-              polygon([[rack_xi + 0.01, plate_z0], [rack_xi - ledge, plate_z0], [rack_xi + 0.01, plate_z0 - ledge - 0.01]]);
-            translate([rack_xi - ledge, face_yb, plate_z1]) cube([ledge + 0.01, rack_yb - face_yb, ledge]);
             // board guide rail and the ledge the board edge rests on
             translate([board[0]/2 + 0.2, board_y0 - 0.2, in_z - 0.01]) cube([2.4, rack_yb - board_y0 + 0.2, 3.2]);
             translate([board[0]/2 - 1, board_y0 - 0.2, in_z - 0.01]) cube([1.21, rack_yb - board_y0 + 0.2, board_z - in_z + 0.01]);
@@ -42,6 +59,7 @@ module rack() {
             translate([board[0]/2 - 2, board_y0 - 1.2, in_z - 0.01]) cube([4.6, 1, 2.2]);
           }
         }
+        plate();
         // back beam between the towers (stiffens the top)
         translate([-tower_x - 0.01, rack_yb - 3, rack_top - 4]) cube([2*tower_x + 0.02, 3, 4]);
       }

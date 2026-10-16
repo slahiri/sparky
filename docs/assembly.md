@@ -30,11 +30,9 @@ Push 5 mm pieces of 1.75 mm filament into the pin holes: two on the back of the 
 2. **Display:** slide the OLED down into the groove from the top, glass facing forward, pins at the top. It stops on the shelf above the speaker.
 3. Plug the display's four wires onto its pins.
 
-## 4. Load the middle plate
+## 4. Get the sensor boards ready
 
-1. **MPU-6050:** slide it into the groove on top from the back until it hits the front stop, chips up, header at the back.
-2. **Amp:** turn the plate over and slide the amp into the groove underneath, terminal at the back. Screw the speaker wires into the terminal now.
-3. Plug the jumpers onto both modules.
+Screw the speaker wires into the amp's terminal and plug the jumpers onto the MPU-6050 and the amp. They slide into the rack in step 7.
 
 ## 5. Load the lid
 
@@ -51,9 +49,9 @@ Follow [Wiring](wiring.md). Plug every jumper onto the expansion board, with the
 1. Put the collar on the base pins, then stand the **rack** in the collar; it snaps to the base.
 2. Stand the **face frame** on the two floor pins at the front.
 3. Slide the **board** in from the back along the floor rails, USB-C facing back, until it stops.
-4. Slide the **middle plate** in from the back along the wall ledges. Feed the wires down through the plate's corner holes.
-5. Optional: slide a **LiPo** into either side bay from the back and plug it into the board.
+4. Slide the **MPU-6050** (left, header at the back) and the **amp** (right, terminal at the front) into the two grooves on top of the middle plate until they hit the front stops. Feed the wires down through the plate's corner holes.
+5. Optional: slide a **LiPo** in from the back along either side wall, under the plate, and plug it into the board.
 6. Drop the **lid** in between the two towers. The mic and touch wires hang down through its slots.
-7. Lower the **shell** over everything; it snaps to the towers and holds the face frame, plate and lid in place.
+7. Lower the **shell** over everything; it snaps to the towers and holds the face frame and lid in place.
 
 To open it, pull the shell straight up. The lid lifts out, and everything else slides out of the back.

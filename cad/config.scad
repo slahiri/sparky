@@ -50,25 +50,24 @@ rack_top  = 68.4;    // top of the walls = underside of the lid
 lid_t     = 4;
 lid_top   = rack_top + lid_t;            // 72.4
 
-tower_x   = 17.2;    // inner face of the two top towers (lid fits between)
+tower_x   = 19.9;    // inner face of the two top towers (lid fits between)
 tower_z0  = rack_top - 2;                // underside of the towers
 chamfer   = 3;       // 45 deg chamfer on the towers' outer top edges
 
-// LiPo side bays: a rib on each side, the bay is between rib and wall
-rib_x     = 19.6;    // inner face of the rib
-rib_t     = 1.6;
-bay_z1    = 41.8;    // top of the ribs
 
-// Middle plate (slide 2): MPU-6050 on top, amp hanging underneath
+// Middle plate: part of the rack. The MPU-6050 and the amp slide into
+// grooves on top of it from the back; only the boards move.
 plate_z0  = 43;
 plate_t   = 3;
 plate_z1  = plate_z0 + plate_t;          // 46
 plate_y0  = -15.2;
-plate_w   = 2*rack_xi - 0.4;
-hole_x    = [12, 19.4];                  // wire holes in the plate corners (|x|)
-hole_yf   = [-14.2, -8.6];
+mpu_cx    = -11.5;                       // groove centres (X)
+amp_cx    = 10;
+groove_y0 = -8.6;                        // front edge of both boards (front stops)
+hole_x    = [12, 18.8];                  // wire holes in the plate corners (|x|)
+hole_yf   = [-14.2, -10];
 hole_yb   = [13.6, 19.6];
-ledge     = 1.2;                         // plate ledges on the walls
+ledge     = 1.2;                         // lid ledges on the towers
 
 // Board slide (slide 1)
 board     = [28, 34.6, 1.6];             // expansion board (measure)
